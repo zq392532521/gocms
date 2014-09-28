@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="cmsAdmin" extends="all-default" namespace="/admin/cms">
+		<global-results>
+			<result name="msg" >/WEB-INF/page/msg.jsp</result>
+			<result name="showMessage" >/WEB-INF/page/admin/showMessage.jsp</result>
+		</global-results>
+		<action name="site_*" method="{1}" class="cn.freeteam.cms.action.SiteAction">
+			<result name="site" >/WEB-INF/page/admin/cms/site.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/siteEdit.jsp</result>
+			<result name="config" >/WEB-INF/page/admin/cms/siteConfig.jsp</result>
+			<result name="siteSelect" >/WEB-INF/page/admin/cms/siteSelect.jsp</result>
+			<result name="siteSelectPage" >/WEB-INF/page/admin/cms/siteSelectPage.jsp</result>
+			<result name="siteSelectPar" >/WEB-INF/page/admin/cms/siteSelectPar.jsp</result>
+			<result name="siteCheck" >/WEB-INF/page/admin/cms/siteCheck.jsp</result>
+			<result name="auth" >/WEB-INF/page/admin/cms/siteAuth.jsp</result>
+			<result name="authPage" >/WEB-INF/page/admin/cms/siteAuthPage.jsp</result>
+			<result name="init" >/WEB-INF/page/admin/cms/siteInit.jsp</result>
+			<result name="guide" >/WEB-INF/page/admin/cms/siteGuide.jsp</result>
+			<result name="guideTemplet" >/WEB-INF/page/admin/cms/siteGuideTemplet.jsp</result>
+			<result name="guideInit" >/WEB-INF/page/admin/cms/siteGuideInit.jsp</result>
+			<result name="guideCompleted" >/WEB-INF/page/admin/cms/siteGuideCompleted.jsp</result>
+		</action>
+		<action name="channel_*" method="{1}" class="cn.freeteam.cms.action.ChannelAction">
+		 	<interceptor-ref name ="fileUploadStack" /> 
+			<result name="channel" >/WEB-INF/page/admin/cms/channel.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/channelEdit.jsp</result>
+			<result name="channelSelect" >/WEB-INF/page/admin/cms/channelSelect.jsp</result>
+			<result name="auth" >/WEB-INF/page/admin/cms/channelAuth.jsp</result>
+			<result name="makehtml" >/WEB-INF/page/admin/cms/channelMakehtml.jsp</result>
+		</action>
+		<action name="info_*" method="{1}" class="cn.freeteam.cms.action.InfoAction">            
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+		
+			<result name="edit" >/WEB-INF/page/admin/cms/infoEdit.jsp</result>
+			<result name="info" >/WEB-INF/page/admin/cms/info.jsp</result>
+			<result name="list" >/WEB-INF/page/admin/cms/infoList.jsp</result>
+			<result name="makehtml" >/WEB-INF/page/admin/cms/infoMakehtml.jsp</result>
+			<result name="extract" >/WEB-INF/page/admin/cms/infoExtract.jsp</result>
+			<result name="extractMakehtml" >/WEB-INF/page/admin/cms/infoExtractMakehtml.jsp</result>
+			<result name="copyMakehtml" >/WEB-INF/page/admin/cms/infoCopyMakehtml.jsp</result>
+			<result name="moveMakehtml" >/WEB-INF/page/admin/cms/infoMoveMakehtml.jsp</result>
+		</action>
+		<action name="templet_*" method="{1}" class="cn.freeteam.cms.action.TempletAction"> 
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            
+            <result name="goTempletUploadFile" >/WEB-INF/page/admin/cms/templetUploadFile.jsp</result>
+			<result name="list" >/WEB-INF/page/admin/cms/templetList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/templetEdit.jsp</result>
+			<result name="fileManage" >/WEB-INF/page/admin/cms/templetFileManage.jsp</result>
+			<result name="fileSon" >/WEB-INF/page/admin/cms/templetFileSon.jsp</result>
+			<result name="fileSonSelect" >/WEB-INF/page/admin/cms/templetFileSonSelect.jsp</result>
+			<result name="fileEdit" >/WEB-INF/page/admin/cms/templetFileEdit.jsp</result>
+			<result name="folderEdit" >/WEB-INF/page/admin/cms/templetFolderEdit.jsp</result>
+			<result name="select" >/WEB-INF/page/admin/cms/templetSelect.jsp</result>
+			<result name="selectFile" >/WEB-INF/page/admin/cms/templetSelectFile.jsp</result>
+			<result name="data" >/WEB-INF/page/admin/cms/templetData.jsp</result>
+		</action>
+		<action name="templetChannel_*" method="{1}" class="cn.freeteam.cms.action.TempletChannelAction">
+		 	<interceptor-ref name ="fileUploadStack" /> 
+			<result name="edit" >/WEB-INF/page/admin/cms/templetChannelEdit.jsp</result>
+			<result name="templetChannelSelect" >/WEB-INF/page/admin/cms/templetChannelSelect.jsp</result>
+		</action>
+		<action name="templetLink_*" method="{1}" class="cn.freeteam.cms.action.TempletLinkAction">
+			<result name="class" >/WEB-INF/page/admin/cms/templetLinkClass.jsp</result>
+			<result name="clazzEdit" >/WEB-INF/page/admin/cms/templetLinkClassEdit.jsp</result>
+		</action>
+		<action name="html_*" method="{1}" class="cn.freeteam.cms.action.HtmlAction">
+			<result name="index" >/WEB-INF/page/admin/cms/htmlIndex.jsp</result>
+			<result name="indexConfirm" >/WEB-INF/page/admin/cms/htmlIndexConfirm.jsp</result>
+			<result name="channel" >/WEB-INF/page/admin/cms/htmlChannel.jsp</result>
+			<result name="info" >/WEB-INF/page/admin/cms/htmlInfo.jsp</result>
+			<result name="msg" >/msg.jsp</result>
+		</action>
+		<action name="link_*" method="{1}" class="cn.freeteam.cms.action.LinkAction">
+			<result name="class" >/WEB-INF/page/admin/cms/linkClass.jsp</result>
+			<result name="clazzEdit" >/WEB-INF/page/admin/cms/linkClassEdit.jsp</result>
+			<result name="list" >/WEB-INF/page/admin/cms/linkList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/linkEdit.jsp</result>
+		</action>
+		<action name="mail_*" method="{1}" class="cn.freeteam.cms.action.MailAction">
+			<result name="list" >/WEB-INF/page/admin/cms/mailList.jsp</result>
+			<result name="forward" >/WEB-INF/page/admin/cms/mailForward.jsp</result>
+			<result name="pro" >/WEB-INF/page/admin/cms/mailPro.jsp</result>
+		</action>
+		<action name="report_*" method="{1}" class="cn.freeteam.cms.action.ReportAction">
+			<result name="list" >/WEB-INF/page/admin/cms/reportList.jsp</result>
+			<result name="forward" >/WEB-INF/page/admin/cms/reportForward.jsp</result>
+			<result name="pro" >/WEB-INF/page/admin/cms/reportPro.jsp</result>
+		</action>
+		<action name="applyopen_*" method="{1}" class="cn.freeteam.cms.action.ApplyopenAction">
+			<result name="list" >/WEB-INF/page/admin/cms/applyopenList.jsp</result>
+			<result name="forward" >/WEB-INF/page/admin/cms/applyopenForward.jsp</result>
+			<result name="pro" >/WEB-INF/page/admin/cms/applyopenPro.jsp</result>
+		</action>
+		<action name="guestbook_*" method="{1}" class="cn.freeteam.cms.action.GuestbookAction">
+			<result name="list" >/WEB-INF/page/admin/cms/guestbookList.jsp</result>
+			<result name="pro" >/WEB-INF/page/admin/cms/guestbookPro.jsp</result>
+		</action>
+		<action name="question_*" method="{1}" class="cn.freeteam.cms.action.QuestionAction">
+			<result name="list" >/WEB-INF/page/admin/cms/questionList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/questionEdit.jsp</result>
+		</action>
+		<action name="answer_*" method="{1}" class="cn.freeteam.cms.action.AnswerAction">
+		<result name="answer" >/WEB-INF/page/admin/cms/answer.jsp</result>
+		</action>
+		<action name="memberauth_*" method="{1}" class="cn.freeteam.cms.action.MemberauthAction">
+			<result name="list" >/WEB-INF/page/admin/cms/memberauthList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/memberauthEdit.jsp</result>
+		</action>
+		<action name="membergroup_*" method="{1}" class="cn.freeteam.cms.action.MembergroupAction">
+			<result name="list" >/WEB-INF/page/admin/cms/membergroupList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/membergroupEdit.jsp</result>
+			<result name="auth" >/WEB-INF/page/admin/cms/membergroupAuth.jsp</result>
+		</action>
+		<action name="member_*" method="{1}" class="cn.freeteam.cms.action.MemberAction">
+			<result name="list" >/WEB-INF/page/admin/cms/memberList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/memberEdit.jsp</result>
+		</action>
+		<action name="creditrule_*" method="{1}" class="cn.freeteam.cms.action.CreditruleAction">
+			<result name="list" >/WEB-INF/page/admin/cms/creditruleList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/creditruleEdit.jsp</result>
+		</action>
+		<action name="creditlog_*" method="{1}" class="cn.freeteam.cms.action.CreditlogAction">
+			<result name="list" >/WEB-INF/page/admin/cms/creditlogList.jsp</result>
+		</action>
+		<action name="comment_*" method="{1}" class="cn.freeteam.cms.action.CommentAction">
+			<result name="list" >/WEB-INF/page/admin/cms/commentList.jsp</result>
+		</action>
+		<action name="sensitive_*" method="{1}" class="cn.freeteam.cms.action.SensitiveAction">
+			<result name="list" >/WEB-INF/page/admin/cms/sensitiveList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/sensitiveEdit.jsp</result>
+		</action>
+		<action name="stat_*" method="{1}" class="cn.freeteam.cms.action.StatAction">
+			<result name="workload" >/WEB-INF/page/admin/cms/workload.jsp</result>
+			<result name="workloadExport" >/WEB-INF/page/admin/cms/workloadExport.jsp</result>
+			<result name="sysWorkload" >/WEB-INF/page/admin/cms/sysWorkload.jsp</result>
+			<result name="sysWorkloadExport" >/WEB-INF/page/admin/cms/sysWorkloadExport.jsp</result>
+			<result name="sysSiteStat" >/WEB-INF/page/admin/cms/sysSiteStat.jsp</result>
+			<result name="sysSiteStatExport" >/WEB-INF/page/admin/cms/sysSiteStatExport.jsp</result>
+			<result name="channelStat" >/WEB-INF/page/admin/cms/channelStat.jsp</result>
+			<result name="channelStatExport" >/WEB-INF/page/admin/cms/channelStatExport.jsp</result>
+			<result name="infoUpdate" >/WEB-INF/page/admin/cms/infoUpdateStat.jsp</result>
+			<result name="infoUpdateExport" >/WEB-INF/page/admin/cms/infoUpdateStatExport.jsp</result>
+			<result name="sysInfoUpdate" >/WEB-INF/page/admin/cms/sysInfoUpdateStat.jsp</result>
+			<result name="sysInfoUpdateExport" >/WEB-INF/page/admin/cms/sysInfoUpdateStatExport.jsp</result>
+			<result name="channelVisit" >/WEB-INF/page/admin/cms/channelVisit.jsp</result>
+			<result name="channelVisitExport" >/WEB-INF/page/admin/cms/channelVisitExport.jsp</result>
+			<result name="sysSiteVisit" >/WEB-INF/page/admin/cms/sysSiteVisit.jsp</result>
+			<result name="sysSiteVisitExport" >/WEB-INF/page/admin/cms/sysSiteVisitExport.jsp</result>
+			<result name="infoVisit" >/WEB-INF/page/admin/cms/infoVisit.jsp</result>
+			<result name="infoVisitExport" >/WEB-INF/page/admin/cms/infoVisitExport.jsp</result>
+			<result name="visitStat" >/WEB-INF/page/admin/cms/visitStat.jsp</result>
+			<result name="visitStatExport" >/WEB-INF/page/admin/cms/visitStatExport.jsp</result>
+			<result name="sysVisitStat" >/WEB-INF/page/admin/cms/sysVisitStat.jsp</result>
+			<result name="sysVisitStatExport" >/WEB-INF/page/admin/cms/sysVisitStatExport.jsp</result>
+			<result name="guestbookUpdate" >/WEB-INF/page/admin/cms/guestbookUpdateStat.jsp</result>
+			<result name="guestbookUpdateExport" >/WEB-INF/page/admin/cms/guestbookUpdateStatExport.jsp</result>
+			<result name="sysGuestbookUpdate" >/WEB-INF/page/admin/cms/sysGuestbookUpdateStat.jsp</result>
+			<result name="sysGuestbookUpdateExport" >/WEB-INF/page/admin/cms/sysGuestbookUpdateStatExport.jsp</result>
+			<result name="sysSiteGuestbook" >/WEB-INF/page/admin/cms/sysSiteGuestbook.jsp</result>
+			<result name="sysSiteGuestbookExport" >/WEB-INF/page/admin/cms/sysSiteGuestbookExport.jsp</result>
+			<result name="commentUpdate" >/WEB-INF/page/admin/cms/commentUpdateStat.jsp</result>
+			<result name="commentUpdateExport" >/WEB-INF/page/admin/cms/commentUpdateStatExport.jsp</result>
+			<result name="sysCommentUpdate" >/WEB-INF/page/admin/cms/sysCommentUpdateStat.jsp</result>
+			<result name="sysCommentUpdateExport" >/WEB-INF/page/admin/cms/sysCommentUpdateStatExport.jsp</result>
+			<result name="sysSiteComment" >/WEB-INF/page/admin/cms/sysSiteComment.jsp</result>
+			<result name="sysSiteCommentExport" >/WEB-INF/page/admin/cms/sysSiteCommentExport.jsp</result>
+		</action>
+		<action name="job_*" method="{1}" class="cn.freeteam.cms.action.JobAction">
+			<result name="list" >/WEB-INF/page/admin/cms/jobList.jsp</result>
+			<result name="edit" >/WEB-INF/page/admin/cms/jobEdit.jsp</result>
+		</action>
+		<action name="resume_*" method="{1}" class="cn.freeteam.cms.action.ResumeAction">
+			<result name="list" >/WEB-INF/page/admin/cms/resumeList.jsp</result>
+			<result name="pro" >/WEB-INF/page/admin/cms/resumePro.jsp</result>
+		</action>
+	</package>
+	
+	<package name="cmsWeb" extends="all-default" namespace="/">
+		<global-results>
+			<result name="showMessage" >/WEB-INF/page/showMessage.jsp</result>
+			<result name="msg" >/WEB-INF/page/msg.jsp</result>
+		</global-results>
+		<action name="info_*" method="{1}" class="cn.freeteam.cms.action.web.InfoAction">
+			<result name="sign" >/WEB-INF/page/cms/infoSign.jsp</result>
+		</action>
+		<action name="site_*" method="{1}" class="cn.freeteam.cms.action.web.SiteAction">
+		</action>
+		<action name="templet_*" method="{1}" class="cn.freeteam.cms.action.web.TempletAction">
+		</action>
+		<action name="question_*" method="{1}" class="cn.freeteam.cms.action.web.QuestionAction">
+		</action>
+		<action name="member_*" method="{1}" class="cn.freeteam.cms.action.web.MemberAction">
+		</action>
+		<action name="comment_*" method="{1}" class="cn.freeteam.cms.action.web.CommentAction">
+		</action>
+		<action name="html_*" method="{1}" class="cn.freeteam.cms.action.web.HtmlAction">
+		</action>
+		<action name="visit_*" method="{1}" class="cn.freeteam.cms.action.web.VisitAction">
+		</action>
+		<action name="guestbook_*" method="{1}" class="cn.freeteam.cms.action.web.GuestbookAction">
+		</action>
+		<action name="report_*" method="{1}" class="cn.freeteam.cms.action.web.ReportAction">
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+		</action>
+		<action name="resume_*" method="{1}" class="cn.freeteam.cms.action.web.ResumeAction">
+			<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2048000</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+		</action>
+		<action name="applyopen_*" method="{1}" class="cn.freeteam.cms.action.web.ApplyopenAction">
+		</action>
+		<action name="store_*" method="{1}" class="cn.freeteam.cms.action.web.StoreAction">
+		</action>
+	</package>
+	<package name="cmsMember" extends="all-default" namespace="/member">
+		<global-results>
+			<result name="showMessage" >/WEB-INF/page/member/showMessage.jsp</result>
+			<result name="msg" >/WEB-INF/page/msg.jsp</result>
+		</global-results>
+		<action name="member_*" method="{1}" class="cn.freeteam.cms.action.member.MemberAction">
+			<result name="index" >/WEB-INF/page/member/index.jsp</result>
+			<result name="left" >/WEB-INF/page/member/left.jsp</result>
+		</action>
+		<action name="creditlog_*" method="{1}" class="cn.freeteam.cms.action.member.CreditlogAction">
+			<result name="list" >/WEB-INF/page/member/creditlogList.jsp</result>
+		</action>
+		<action name="comment_*" method="{1}" class="cn.freeteam.cms.action.member.CommentAction">
+			<result name="list" >/WEB-INF/page/member/commentList.jsp</result>
+		</action>
+		<action name="guestbook_*" method="{1}" class="cn.freeteam.cms.action.member.GuestbookAction">
+			<result name="list" >/WEB-INF/page/member/guestbookList.jsp</result>
+			<result name="info" >/WEB-INF/page/member/guestbookInfo.jsp</result>
+		</action>
+		<action name="store_*" method="{1}" class="cn.freeteam.cms.action.member.StoreAction">
+			<result name="list" >/WEB-INF/page/member/storeList.jsp</result>
+		</action>
+		<action name="resume_*" method="{1}" class="cn.freeteam.cms.action.member.ResumeAction">
+			<result name="list" >/WEB-INF/page/member/resumeList.jsp</result>
+			<result name="info" >/WEB-INF/page/member/resumeInfo.jsp</result>
+		</action>
+	</package>
+</struts>

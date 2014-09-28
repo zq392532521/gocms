@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="test" extends="struts-default" namespace="/">
+		<action name="test" method="test" class="cn.freeteam.action.TestPage">
+			<result name="test" type="redirect">/test.jsp</result>
+		</action>
+		<action name="testCommon" method="testCommon" class="cn.freeteam.action.TestPage">
+			<result name="testCommon" >/WEB-INF/page/testcommon.jsp</result>
+		</action>
+		<action name="testOutCommon" method="testOutCommon" class="cn.freeteam.action.TestPage">
+			<result name="testOutCommon" >/testOutCommon.jsp</result>
+		</action>
+	</package>
+
+</struts>

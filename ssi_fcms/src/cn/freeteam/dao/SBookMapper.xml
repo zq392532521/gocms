@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.freeteam.dao.ISBookMapper">
+	<select id="pageTest" parameterType="map" resultType="map" >
+		SELECT * from freecms_func limit #{start},#{pageSize}
+	</select>
+		<select id="pageCount" parameterType="map" resultType="int" >
+		SELECT count(1) from freecms_func 
+	</select>
+</mapper>
