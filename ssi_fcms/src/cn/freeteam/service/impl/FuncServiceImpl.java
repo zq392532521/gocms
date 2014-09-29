@@ -126,7 +126,7 @@ public class FuncServiceImpl implements FuncService{
 		return funcMapper.selectByExample(example);
 	}
 	/**
-	 * 查询所有有权限的
+	 * 根据用户权限查询所有的权限的
 	 * @return
 	 */
 	@Override
@@ -257,6 +257,20 @@ public class FuncServiceImpl implements FuncService{
 		}
 		return funcList;
 	}
+	/**
+	 * 根据菜单id获取一级子菜单
+	 * @param funcId
+	 * @param funcList
+	 * @return
+	 */
+	public List<Func> getfirstSons(String funcId){
+		//获取funcId的子级菜单
+		FuncExample example=new FuncExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andParidEqualTo(funcId);
+		List<Func> sonList=funcMapper.selectByExample(example);
+		return sonList;
+	}
 	//setter and getter
 
 	public FuncMapper getFuncMapper() {
@@ -271,5 +285,27 @@ public class FuncServiceImpl implements FuncService{
 	}
 	public void setFunc(Func func) {
 		this.func = func;
+	}
+	@Override
+	public List<TreeMenu> func2TreeMeu(List<Func> funcList) {
+		// TODO Auto-generated method stub
+		List<TreeMenu> treeList=new ArrayList<TreeMenu>();
+		TreeMenu tm=null;
+		for(Func f:funcList){
+			tm=new TreeMenu();
+			if( f!=null){
+				tm.setId( f.getId());
+				tm.setText( f.getName());
+				tm.setState("close");
+				tm.setIconCls("");
+				Map<String,String> attributesMap=new HashMap<String,String>();
+				attributesMap.put("url",  f.getUrl());
+				attributesMap.put("target",  f.getTarget());
+				tm.setAttributes(attributesMap);
+				tm.setPid(f.getParid());
+			}
+			treeList.add(tm);
+		}
+		return treeList;
 	}
 }

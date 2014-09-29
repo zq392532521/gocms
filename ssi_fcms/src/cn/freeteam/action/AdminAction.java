@@ -143,7 +143,6 @@ public class AdminAction extends BaseAction{
 				}
 			}
 			
-			
 		//	String jsonTreeMenu=JsonUtil.objectToJson(ptreeMenuList);
 			//getHttpSession().setAttribute("funcs", funcTreeList);
 			getHttpSession().setAttribute("funcs", treeMenuList);
@@ -153,9 +152,20 @@ public class AdminAction extends BaseAction{
 		List<TreeMenu> tempList=new ArrayList<TreeMenu>();
 		if(sessionFuncs!=null||sessionFuncs.size()!=0){
 			for(TreeMenu ptreeMenu:sessionFuncs){
-				if(ptreeMenu.getPid().equals(funcid)){
+				if(ptreeMenu==null){
+					continue;
+				}
+				/*************/
+				if (funcService.haveSon(ptreeMenu.getId())) {
+					List<Func> list=	funcService.getfirstSons(ptreeMenu.getId());
+					List<TreeMenu> tmpTreeMenuList=funcService.func2TreeMeu(list);
+					ptreeMenu.setChildren(tmpTreeMenuList);
+				}
+				/*************/
+				
+				if(funcid.equals(ptreeMenu.getPid())){
 					ptreeMenuList.add(ptreeMenu);
-					tempList.add(ptreeMenu);
+					/*tempList.add(ptreeMenu);
 					for(TreeMenu cTreeMenu:sessionFuncs){
 						if(tempList.contains(cTreeMenu)){
 							continue;
@@ -164,7 +174,7 @@ public class AdminAction extends BaseAction{
 							ptreeMenuList.add(cTreeMenu);
 							tempList.add(ptreeMenu);
 						}
-					}
+					}*/
 				}
 				
 			}

@@ -19,7 +19,6 @@ public class TreeMenu implements java.io.Serializable {
 	private List<TreeMenu> children;
 	private String iconCls;
 	private String pid;
-
 	public String getId() {
 		return id;
 	}

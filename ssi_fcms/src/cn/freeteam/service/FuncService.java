@@ -129,5 +129,13 @@ public interface FuncService {
 	 */
 	public List<Func> getSons(String funcId,List<Func> funcList);
 	//setter and getter
+	/**
+	 * 菜单类转换为菜单tree
+	 * @param func
+	 * @return
+	 */
+	public List<TreeMenu> func2TreeMeu(List<Func> func);
+	
+	public List<Func> getfirstSons(String funcId);
 
 }
