@@ -21,13 +21,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   url:sy.basePath+"/admin/admin_left.do",
 		   success: function(data){
 			   treeSting=data.ptreeMenuList;
+			 /*   treeSting= [{
+					"id":1,
+					"text":"My Documents",
+					"children":[{
+						"id":11,
+						"text":"Photos",
+						"state":"closed",
+						
+						"children":[{
+							"id":111,
+							"text":"Friend"
+						},{
+							"id":112,
+							"text":"Wife"
+						},{
+							"id":113,
+							"text":"Company"
+						}]
+					},{
+						"id":12,
+						"text":"Program Files",
+						"children":[{
+							"id":121,
+							"text":"Intel"
+						},{
+							"id":122,
+							"text":"Java",
+							"attributes":{
+								"p1":"Custom Attribute1",
+								"p2":"Custom Attribute2"
+							}
+						},{
+							"id":123,
+							"text":"Microsoft Office"
+						},{
+							"id":124,
+							"text":"Games",
+							"checked":true
+						}]
+					},{
+						"id":13,
+						"text":"index.html"
+					},{
+						"id":14,
+						"text":"about.html"
+					},{
+						"id":15,
+						"text":"welcome.html"
+					}]
+				}]; */
 		   },dataType:"json"
 	});
 	function ajaxLeftMenu(){
 		 mainMenu = $('#mainMenu').tree({
-			 lines:true,
+			 lines:false,
 			 data:treeSting, 
-		 	parentField : 'pid', 
+		 /* 	parentField : 'pid',   */
 			onClick :function(node) {
 				if (node.attributes.url) {
 					linkUrl=node.attributes.url;
@@ -36,16 +86,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}else{
 						linkUrl+="?pageFuncId="+node.id;
 					}
-				var src =sy.basePath+"/admin/"+linkUrl; 
+					var src =sy.basePath+"/admin/"+linkUrl; 
 					
 					if (node.attributes.target && node.attributes.target.length > 0) {
 						window.open(src, node.attributes.target);
 					} else {
+						var iconClsCssLink=node.iconCls;
+						if($('#mainMenu').tree('getParent',node.target)==null){
+						    // o=$('#menuTree').tree('getParent',node.target);
+							iconClsCssLink='play-blue';
+						} 
+						
 						var tabs = $('#mainTabs');
 						var opts = {
 							title : node.text,
 							closable : true,
-							iconCls : node.iconCls,
+							iconCls :iconClsCssLink ,
 							content : sy.formatString('<iframe src="{0}" allowTransparency="true" style="border:0;width:100%;height:99%;" frameBorder="0"></iframe>', src),
 							border : false,
 							fit : true
@@ -119,6 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							}
 						}
 					} catch (e) {
+						alert(e.message);
 					}
 				}
 			}, {
