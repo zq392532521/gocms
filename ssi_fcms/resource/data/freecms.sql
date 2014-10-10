@@ -418,7 +418,7 @@ CREATE TABLE `freecms_func` (
   `url` varchar(1000) NOT NULL,
   `parId` varchar(36) NOT NULL,
    iconCls  varchar(100),
-	target  varchar(300)
+	target  varchar(300),
 
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='功能';
