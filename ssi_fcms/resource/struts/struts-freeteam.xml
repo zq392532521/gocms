@@ -6,83 +6,89 @@
 <struts>
 	<package name="root" extends="all-default" namespace="/">
 		<action name="login_*" method="{1}" class="cn.freeteam.action.LoginAction">
-			<result name="admin"  type="redirect">/admin/admin_index.do </result>
-			<result name="login"   >/WEB-INF/page/login.jsp</result>
-			
+			<result name="admin" type="redirect">/admin/admin_index.do </result>
+			<result name="login">/WEB-INF/page/login.jsp</result>
+
 		</action>
 	</package>
 	<package name="admin" extends="all-default" namespace="/admin">
 		<global-results>
-			<result name="msg" >/WEB-INF/page/msg.jsp</result>
-			<result name="showMessage" >/WEB-INF/page/admin/showMessage.jsp</result>
+			<result name="msg">/WEB-INF/page/msg.jsp</result>
+			<result name="showMessage">/WEB-INF/page/admin/showMessage.jsp</result>
 		</global-results>
 		<action name="func_*" method="{1}" class="cn.freeteam.action.FuncAction">
-			<result name="funcManager" >/WEB-INF/page/admin/func.jsp</result>
-			<result name="operButton" >/WEB-INF/page/admin/operButton.jsp</result>
-			<result name="funcPar" >/WEB-INF/page/admin/funcPar.jsp</result>
+			<result name="funcManager">/WEB-INF/page/admin/func.jsp</result>
+			<result name="operButton">/WEB-INF/page/admin/operButton.jsp</result>
+			<result name="funcPar">/WEB-INF/page/admin/funcPar.jsp</result>
 		</action>
 		<action name="unit_*" method="{1}" class="cn.freeteam.action.UnitAction">
-			<result name="unit" >/WEB-INF/page/admin/unit.jsp</result>
-			<result name="select" >/WEB-INF/page/admin/unitSelect.jsp</result>
+			<result name="unit">/WEB-INF/page/admin/unit.jsp</result>
+			<result name="select">/WEB-INF/page/admin/unitSelect.jsp</result>
 		</action>
 		<action name="user_*" method="{1}" class="cn.freeteam.action.UserAction">
-			<result name="goPwd" >/WEB-INF/page/admin/pwd.jsp</result>
-			<result name="userEdit" >/WEB-INF/page/admin/userEdit.jsp</result>
-			<result name="profile" >/WEB-INF/page/admin/user_profile.jsp</result>
-			<result name="pwd" >/WEB-INF/page/admin/pwd.jsp</result>
-			<result name="list" >/WEB-INF/page/admin/user.jsp</result>
-			<result name="auth" >/WEB-INF/page/admin/userAuth.jsp</result>
-			<result name="appAuth" >/WEB-INF/page/admin/userAppAuth.jsp</result>
-			<result name="ajaxEdit" >/WEB-INF/page/admin/userAjaxEdit.jsp</result>
+			<result name="goPwd">/WEB-INF/page/admin/pwd.jsp</result>
+			<result name="userEdit">/WEB-INF/page/admin/userEdit.jsp</result>
+			<result name="profile">/WEB-INF/page/admin/user_profile.jsp</result>
+			<result name="pwd">/WEB-INF/page/admin/pwd.jsp</result>
+			<result name="list">/WEB-INF/page/admin/user.jsp</result>
+			<result name="auth">/WEB-INF/page/admin/userAuth.jsp</result>
+			<result name="appAuth">/WEB-INF/page/admin/userAppAuth.jsp</result>
+			<result name="ajaxEdit">/WEB-INF/page/admin/userAjaxEdit.jsp</result>
 		</action>
-		<action name="operButton_*" method="{1}" class="cn.freeteam.action.OperButtonAction">
+		<action name="operButton_*" method="{1}"
+			class="cn.freeteam.action.OperButtonAction">
 		</action>
 		<action name="admin_*" method="{1}" class="cn.freeteam.action.AdminAction">
 			<!-- <result name="left" >/inc/left.jsp</result> -->
-			<result name="top" >/WEB-INF/page/admin/top.jsp</result>
-			<result name="right" >/WEB-INF/page/admin/right.jsp</result>
-			<result name="foot" >/WEB-INF/page/admin/foot.jsp</result>
-			<result name="index" >/WEB-INF/page/admin/main.jsp</result>
+			<result name="top">/WEB-INF/page/admin/top.jsp</result>
+			<result name="right">/WEB-INF/page/admin/right.jsp</result>
+			<result name="foot">/WEB-INF/page/admin/foot.jsp</result>
+			<result name="index">/WEB-INF/page/admin/main.jsp</result>
 		</action>
 		<action name="role_*" method="{1}" class="cn.freeteam.action.RoleAction">
-			<result name="edit" >/WEB-INF/page/admin/roleEdit.jsp</result>
-			<result name="auth" >/WEB-INF/page/admin/roleAuth.jsp</result>
-			<result name="authBatch" >/WEB-INF/page/admin/roleAuthBatch.jsp</result>
-			<result name="list" >/WEB-INF/page/admin/role.jsp</result>
-			<result name="ajaxEdit" >/WEB-INF/page/admin/roleAjaxEdit.jsp</result>
-			<result name="select" >/WEB-INF/page/admin/roleSelect.jsp</result>
+			<result name="edit">/WEB-INF/page/admin/roleEdit.jsp</result>
+			<result name="auth">/WEB-INF/page/admin/roleAuth.jsp</result>
+			<result name="authBatch">/WEB-INF/page/admin/roleAuthBatch.jsp</result>
+			<result name="list">/WEB-INF/page/admin/role.jsp</result>
+			<result name="ajaxEdit">/WEB-INF/page/admin/roleAjaxEdit.jsp</result>
+			<result name="select">/WEB-INF/page/admin/roleSelect.jsp</result>
 		</action>
-		<action name="operLog_*" method="{1}" class="cn.freeteam.action.OperLogAction">
-			<result name="list" >/WEB-INF/page/admin/operLog.jsp</result>
+		<action name="operLog_*" method="{1}"
+			class="cn.freeteam.action.OperLogAction">
+			<result name="list">/WEB-INF/page/admin/operLog.jsp</result>
 		</action>
-		<action name="config_*" method="{1}" class="cn.freeteam.action.ConfigAction">
-			<result name="config" >/WEB-INF/page/admin/config.jsp</result>
+		<action name="config_*" method="{1}"
+			class="cn.freeteam.action.ConfigAction">
+			<result name="config">/WEB-INF/page/admin/config.jsp</result>
 		</action>
-		<action name="adminlink_*" method="{1}" class="cn.freeteam.action.AdminlinkAction">
-			<result name="list" >/WEB-INF/page/admin/adminlinkList.jsp</result>
-			<result name="edit" >/WEB-INF/page/admin/adminlinkEdit.jsp</result>
+		<action name="adminlink_*" method="{1}"
+			class="cn.freeteam.action.AdminlinkAction">
+			<result name="list">/WEB-INF/page/admin/adminlinkList.jsp</result>
+			<result name="edit">/WEB-INF/page/admin/adminlinkEdit.jsp</result>
 		</action>
 		<action name="msg_*" method="{1}" class="cn.freeteam.action.MsgAction">
-			<result name="list" >/WEB-INF/page/admin/msgList.jsp</result>
-			<result name="info" >/WEB-INF/page/admin/msgInfo.jsp</result>
-			<result name="send" >/WEB-INF/page/admin/msgSend.jsp</result>
+			<result name="list">/WEB-INF/page/admin/msgList.jsp</result>
+			<result name="info">/WEB-INF/page/admin/msgInfo.jsp</result>
+			<result name="send">/WEB-INF/page/admin/msgSend.jsp</result>
 		</action>
 		<action name="demo_*" method="{1}" class="cn.freeteam.action.DemoAction">
-			<result name="list" >/WEB-INF/page/admin/demoList.jsp</result>
-			<result name="edit" >/WEB-INF/page/admin/demoEdit.jsp</result>
+			<result name="list">/WEB-INF/page/admin/demoList.jsp</result>
+			<result name="edit">/WEB-INF/page/admin/demoEdit.jsp</result>
+		</action>
+	</package>
+
+	<package name="member" extends="all-default" namespace="/member">
+		<global-results>
+			<result name="showMessage">/WEB-INF/page/member/showMessage.jsp</result>
+			<result name="msg">/WEB-INF/page/msg.jsp</result>
+		</global-results>
+		<action name="msg_*" method="{1}"
+			class="cn.freeteam.cms.action.member.MsgAction">
+			<result name="send">/WEB-INF/page/member/msg.jsp</result>
+			<result name="tolist">/WEB-INF/page/member/msgTolist.jsp</result>
+			<result name="sendlist">/WEB-INF/page/member/msgSendlist.jsp</result>
+			<result name="info">/WEB-INF/page/member/msgInfo.jsp</result>
 		</action>
 	</package>
 	
-	<package name="member" extends="all-default" namespace="/member">
-		<global-results>
-			<result name="showMessage" >/WEB-INF/page/member/showMessage.jsp</result>
-			<result name="msg" >/WEB-INF/page/msg.jsp</result>
-		</global-results>
-		<action name="msg_*" method="{1}" class="cn.freeteam.cms.action.member.MsgAction">
-			<result name="send" >/WEB-INF/page/member/msg.jsp</result>
-			<result name="tolist" >/WEB-INF/page/member/msgTolist.jsp</result>
-			<result name="sendlist" >/WEB-INF/page/member/msgSendlist.jsp</result>
-			<result name="info" >/WEB-INF/page/member/msgInfo.jsp</result>
-		</action>
-	</package>
 </struts>

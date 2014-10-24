@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="fileUploadPackage" extends="all-default"
+		namespace="/">
+		<action name="fileUpload" method="fileUpload"
+			class="cn.freeteam.action.FileUploadAction">
+			<result name="fileUpload">/WEB-INF/page/fileUpload.jsp</result>
+		</action>
+		<action name="doFileUpload" class="cn.freeteam.action.FileUploadAction">
+			<result name="success">/WEB-INF/page/fileUploadSuccess.jsp</result>
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+			<interceptor-ref name="defaultStack" />
+
+		</action>
+		<action name="multipleFileUpload" method="multipleFileUpload"
+			class="cn.freeteam.action.MultipleFileUploadAction">
+			<result name="multipleFileUpload">/WEB-INF/page/multipleFileUpload.jsp</result>
+		</action>
+		<action name="doMultipleFileUpload" class="cn.freeteam.action.MultipleFileUploadAction">
+			<result name="success">/WEB-INF/page/multipleFUSuccess.jsp</result>
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+			<interceptor-ref name="defaultStack" />
+
+		</action>
+		<action name="testLog" class="cn.freeteam.action.test.log.TestLog">
+			<result name="success">/WEB-INF/page/multipleFUSuccess.jsp</result>
+		</action>
+	</package>
+
+	<package name="fileDownPackage" extends="all-default"
+		namespace="/">
+		<!-- 在这里添加Action定义 -->
+
+		<!-- 简单文件下载 -->
+		<action name="download" class="cn.freeteam.action.FileDownloadAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="struts2中文.txt"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+
+		<!-- 文件下载，支持中文附件名 -->
+		<action name="download2" class="cn.freeteam.action.FileDownloadAction2">
+			<!-- 初始文件名 -->
+
+			<param name="fileName">Struts中文附件.txt</param>
+
+			<result name="success" type="stream">
+
+				<param name="contentType">text/plain</param>
+
+				<param name="inputName">inputStream</param>
+
+				<!-- 使用经过转码的文件名作为下载文件名，downloadFileName属性 对应action类中的方法 getDownloadFileName() -->
+
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+
+				<param name="bufferSize">4096</param>
+
+			</result>
+		</action>
+
+		<!-- 下载现有文件 -->
+		<action name="download3" class="example.FileDownloadAction3">
+			<param name="inputPath">/download/系统说明.doc</param>
+			<!-- 初始文件名 -->
+			<param name="fileName">系统说明.doc</param>
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="inputName">inputStream</param>
+				<!-- 使用经过转码的文件名作为下载文件名，downloadFileName属性 对应action类中的方法 getDownloadFileName() -->
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+
+	</package>
+</struts>
